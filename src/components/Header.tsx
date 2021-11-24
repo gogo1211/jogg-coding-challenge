@@ -78,7 +78,7 @@ export const Header = () => {
             <Select value={statusFilter} onChange={handleChangeStatusFilter} fullWidth>
               <option value="">All</option>
               <option value="ongoing">Ongoing</option>
-              <option value="scheduled">scheduled</option>
+              <option value="scheduled">Scheduled</option>
               <option value="ended">Ended</option>
             </Select>
           </SelectWrapperDiv>

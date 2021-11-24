@@ -8,6 +8,10 @@ import { useCards } from '@src/hooks/useCards';
 import { GridView } from '@src/components/GridView';
 import { TableView } from '@src/components/TableView';
 import { useCardView } from '@src/hooks/useCardView';
+
+import { MotionInView } from '@src/animation/MotionInView';
+import { varFadeIn } from '@src/animation/variants';
+
 import { generateCards } from './api/cards';
 
 const ContentDiv = styled.div(
@@ -36,7 +40,9 @@ const CardView = () => {
 
   return (
     <ContentDiv>
-      {mode === 'grid' ? <GridView cards={filteredCards || []} /> : <TableView cards={filteredCards || []} />}
+      <MotionInView variants={varFadeIn} key={mode + statusFilter}>
+        {mode === 'grid' ? <GridView cards={filteredCards || []} /> : <TableView cards={filteredCards || []} />}
+      </MotionInView>
     </ContentDiv>
   );
 };

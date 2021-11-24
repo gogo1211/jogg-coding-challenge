@@ -1,6 +1,9 @@
 import { FC, useMemo } from 'react';
 import styled from '@emotion/styled';
+
 import { ICard } from '@src/types/ICard';
+import { MotionInView } from '@src/animation/MotionInView';
+import { varFadeInUp } from '@src/animation/variants';
 
 import { Card } from './Card';
 
@@ -27,7 +30,15 @@ interface GridViewProps {
 }
 
 export const GridView: FC<GridViewProps> = ({ cards }) => {
-  const memorized = useMemo(() => cards.map((card) => <Card key={card.id} card={card} />), [cards]);
+  const memorized = useMemo(
+    () =>
+      cards.map((card) => (
+        <MotionInView key={card.id} variants={varFadeInUp}>
+          <Card card={card} />
+        </MotionInView>
+      )),
+    [cards]
+  );
 
   return <ContainerDiv>{memorized}</ContainerDiv>;
 };
